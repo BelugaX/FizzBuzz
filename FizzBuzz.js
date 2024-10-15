@@ -1,6 +1,9 @@
 import React from 'react'
 
 const FizzBuzz = ({ number }) => {
+    if (typeof number !== 'number' || isNaN(number)) {
+        return <div>Error: Input is not a valid number</div>
+    }
     if (number < 0) {
         return <div>Error: Input Cannot be Negative</div>
     }
