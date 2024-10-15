@@ -1,6 +1,9 @@
 import React from 'react'
 
 const FizzBuzz = ({ number }) => {
+    if (number < 0) {
+        return <div>Error: Input Cannot be Negative</div>
+    }
     if (number === 0) {
         return <div>0</div>
     }
