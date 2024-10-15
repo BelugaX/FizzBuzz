@@ -32,4 +32,11 @@ describe('FizzBuzz Component', () => {
 
         expect(screen.getByText('FizzBuzz')).toBeInTheDocument();
     });
+
+    //Test Case for handling Zero
+    test('renders 0', () => {
+        render(<FizzBuzz number={0} />);
+
+        expect(screen.getByText('0')).toBeInTheDocument();
+    });
 });
