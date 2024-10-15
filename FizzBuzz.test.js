@@ -46,4 +46,11 @@ describe('FizzBuzz Component', () => {
 
         expect(screen.getByText('Error: Input Cannot be Negative')).toBeInTheDocument();
     });
+
+    //Test Case for handling Non-number
+    test('handles non-number', () => {
+        render(<FizzBuzz number="a" />);
+
+        expect(screen.getByText('Error: Input is not a valid number')).toBeInTheDocument();
+    });
 });
