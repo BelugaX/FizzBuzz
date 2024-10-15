@@ -39,4 +39,11 @@ describe('FizzBuzz Component', () => {
 
         expect(screen.getByText('0')).toBeInTheDocument();
     });
+
+    //Test Case for handling Negative numbers
+    test('handles negative numbers', () => {
+        render(<FizzBuzz number={-1} />);
+
+        expect(screen.getByText('Error: Input Cannot be Negative')).toBeInTheDocument();
+    });
 });
