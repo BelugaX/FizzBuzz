@@ -25,4 +25,11 @@ describe('FizzBuzz Component', () => {
 
         expect(screen.getByText('Buzz')).toBeInTheDocument();
     });
+
+    //Test Case for FizzBuzz - Red Stage
+    test('renders Fizz for number 15', () => {
+        render(<FizzBuzz number={15} />);
+
+        expect(screen.getByText('FizzBuzz')).toBeInTheDocument();
+    });
 });
