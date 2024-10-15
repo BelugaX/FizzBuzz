@@ -53,4 +53,11 @@ describe('FizzBuzz Component', () => {
 
         expect(screen.getByText('Error: Input is not a valid number')).toBeInTheDocument();
     });
+
+    //Test Case for handling undefined input
+    test('handles empty input', () => {
+        render(<FizzBuzz number={undefined} />);
+
+        expect(screen.getByText('Error: Input is not a valid number')).toBeInTheDocument();
+    });
 });
