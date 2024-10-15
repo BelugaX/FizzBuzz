@@ -1,25 +1,36 @@
 import React from 'react'
 
 const FizzBuzz = ({ number }) => {
-    if (typeof number !== 'number' || isNaN(number)) {
-        return <div>Error: Input is not a valid number</div>
+    const validateInput = () => {
+        if (typeof number !== 'number' || isNaN(number)) {
+            return <div>Error: Input is not a valid number</div>
+        }
+        if (number < 0) {
+            return <div>Error: Input Cannot be Negative</div>
+        }
+        return null;
     }
-    if (number < 0) {
-        return <div>Error: Input Cannot be Negative</div>
+
+    const fizzBuzzLogic = (number) => {
+        let result = '';
+
+        if (number === 0) return '0';
+
+        //Multiples of 3 - Green Stage
+        if (number % 3 === 0) result += 'Fizz';
+
+        //Multiples of 5 - Green Stage
+        if (number % 5 === 0) result += 'Buzz';
+
+        return (
+            <div>{result || number.toString()}</div>
+        )
     }
-    if (number === 0) {
-        return <div>0</div>
-    }
-    if (number % 3 === 0 && number % 5 === 0) {
-        return <div>FizzBuzz</div>
-    }
-    if (number % 3 === 0) {
-        return <div>Fizz</div>
-    }
-    if (number % 5 === 0) {
-        return <div>Buzz</div>
-    }
-  return <div>{number}</div>;
+
+    const errorMessage = validateInput();
+    if (errorMessage) return <div>{errorMessage}</div>
+
+    return <div>{fizzBuzzLogic(number)}</div>
 }
 
 export default FizzBuzz;

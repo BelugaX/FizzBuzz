@@ -4,7 +4,7 @@ import FizzBuzz from './FizzBuzz';
 function App() {
   return (
     <div className="App">
-      <FizzBuzz />
+      <FizzBuzz number={15}/>
     </div>
   );
 }
