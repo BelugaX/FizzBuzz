@@ -1,15 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-const FizzBuzz = ({ number }) => {
-    const validateInput = () => {
-        if (typeof number !== 'number' || isNaN(number)) {
-            return <div>Error: Input is not a valid number</div>
+const FizzBuzz = () => {
+    const [userInput, setUserInput] = useState('');
+    const [result, setResult] = useState('');
+
+    const validateInput = (input) => {
+        if (input.trim() === '') { // Check for empty or whitespace-only strings
+            return 'Error: Input is not a valid number';
         }
+        
+        const number = Number(input);
+        
+        if (isNaN(number)) {
+            return 'Error: Input is not a valid number';
+        }
+        
         if (number < 0) {
-            return <div>Error: Input Cannot be Negative</div>
+            return 'Error: Input Cannot be Negative';
         }
+        
         return null;
-    }
+    };    
 
     const fizzBuzzLogic = (number) => {
         let result = '';
@@ -27,10 +38,32 @@ const FizzBuzz = ({ number }) => {
         )
     }
 
-    const errorMessage = validateInput();
-    if (errorMessage) return <div>{errorMessage}</div>
+    const handleInputChange = (e) => {
+        const userInputValue = e.target.value;
+        setUserInput(userInputValue);
+    
+        const errorMessage = validateInput(userInputValue);
+    
+        if (errorMessage) {
+            setResult(errorMessage);
+        } else {
+            const number = Number(userInputValue);
+            setResult(fizzBuzzLogic(number));
+        }
+    };    
 
-    return <div>{fizzBuzzLogic(number)}</div>
+    return (
+        <div>
+            <h1>FizzBuzz App</h1>
+            <input 
+                type='text'
+                value={userInput}
+                onChange={handleInputChange}
+                placeholder='Enter a number'
+            />
+            <div>{result}</div>
+        </div>
+    )
 }
 
 export default FizzBuzz;
